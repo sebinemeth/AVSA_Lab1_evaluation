@@ -33,7 +33,7 @@ end
 function range = readTemporalFile(path)
     % Reads the temporal file and returns the important range
     
-    fID = fopen([path, '\temporalROI.txt']);
+    fID = fopen([path, '/temporalROI.txt']);
     if fID < 0
         disp(ferror(fID));
         exit(0);
@@ -54,7 +54,7 @@ function confusionMatrix = compareImageFiles(gtFolder, resFolder, idxFrom, idxTo
     %get filenames for the result images
     extensions = {'png','jpeg','jpg','bmp'};   
     for i=1:numel(extensions)        
-        resfiles=ls(fullfile(resFolder, ['*.' extensions{i}]));        
+        resfiles=cell2mat(extractfield(dir(fullfile(resFolder, ['*.' extensions{i}])), 'name')');        
         if ~isempty(resfiles)
            threshold = strcmp(extensions{i}, '.jpg') == 1 || strcmp(extensions{i}, '.jpeg') == 1;
            break; 
@@ -62,7 +62,7 @@ function confusionMatrix = compareImageFiles(gtFolder, resFolder, idxFrom, idxTo
     end
 
     %get filenames for the ground-truth images
-    gtfiles=ls(fullfile(gtFolder, '*.png'));    
+    gtfiles=cell2mat(extractfield(dir(fullfile(gtFolder, '*.png')), 'name')');    
    
     if(size(resfiles,1) ~= size(gtfiles,1))
         fprintf('ERROR! No equal number of files in ground-truth and result directories. (currently %d gt files and %d results)\n\n',size(gtfiles,1),size(resfiles,1))
