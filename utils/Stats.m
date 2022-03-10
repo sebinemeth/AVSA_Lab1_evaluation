@@ -50,7 +50,7 @@ classdef Stats < handle
                 return
             end
             
-            fid = fopen([this.resultsPath '/' category '/eval_category.txt'], 'wt');
+            fid = fopen(fullfile(this.resultsPath, category, 'eval_category.txt'), 'wt');
             
             WriteAnddisp_flag(fid, disp_flag,sprintf('#Results for category %s\n', category));
             WriteAnddisp_flag(fid, disp_flag,'#A description of the metrics can be found here http://jacarini.dinf.usherbrooke.ca/resultEvaluation/\n');
@@ -77,7 +77,7 @@ classdef Stats < handle
         function this = writeOverallResults(this,disp_flag)
             categoryStats = containers.Map();
             
-            fid = fopen([this.resultsPath  '/eval_overall.txt'], 'wt');
+            fid = fopen(fullfile(this.resultsPath, 'eval_overall.txt'), 'wt');
             fprintf('\n\n');
             WriteAnddisp_flag(fid, disp_flag,'#OVERALL RESULTS\n');
             WriteAnddisp_flag(fid, disp_flag,'#A description of the metrics can be found here http://jacarini.dinf.usherbrooke.ca/resultEvaluation/\n');
