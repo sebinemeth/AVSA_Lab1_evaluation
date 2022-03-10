@@ -54,7 +54,7 @@ classdef Stats < handle
             
             WriteAnddisp_flag(fid, disp_flag,sprintf('#Results for category %s\n', category));
             WriteAnddisp_flag(fid, disp_flag,'#A description of the metrics can be found here http://jacarini.dinf.usherbrooke.ca/resultEvaluation/\n');
-            WriteAnddisp_flag(fid, disp_flag,sprintf('#%s\tvideo\t\t\t\tTP\t\t\tFN\t\t\tFN\t\t\tTN\t\t\t\tSE\n',pad('category',length(category)+1)));            
+            WriteAnddisp_flag(fid, disp_flag,sprintf('#%s\tvideo\t\t\t\tTP\t\t\tFP\t\t\tFN\t\t\tTN\t\t\t\tSE\n',pad('category',length(category)+1)));            
             
             for video = keys(currentCategory)
                 video = video{1};
@@ -81,7 +81,7 @@ classdef Stats < handle
             fprintf('\n\n');
             WriteAnddisp_flag(fid, disp_flag,'#OVERALL RESULTS\n');
             WriteAnddisp_flag(fid, disp_flag,'#A description of the metrics can be found here http://jacarini.dinf.usherbrooke.ca/resultEvaluation/\n');
-            WriteAnddisp_flag(fid, disp_flag,'#category\t\t\t\tvideo\t\t\t\tTP\t\t\tFN\t\t\tFN\t\t\tTN\t\t\t\tSE\n');
+            WriteAnddisp_flag(fid, disp_flag,'#category\t\t\t\tvideo\t\t\t\tTP\t\t\tFP\t\t\tFN\t\t\tTN\t\t\t\tSE\n');
             
             for category = keys(this.categories)
                 category = category{1};
